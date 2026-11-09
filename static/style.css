@@ -1,0 +1,198 @@
+/* ==========================================================================
+   TrustVault Master System Stylesheet
+   ========================================================================== */
+
+/* 1. Design System & Variables */
+:root {
+    --primary-blue: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success-green: #059669;
+    --success-hover: #047857;
+    --danger-red: #dc2626;
+    --bg-page: #f1f5f9;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+    --border-subtle: #e2e8f0;
+    --text-dark: #0f172a;
+    --text-muted: #475569;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* 2. Base Reset & Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Navigation Bar */
+.navbar-custom {
+    background-color: #0f172a !important;
+    border-bottom: 2px solid #334155;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* 4. Role Badges (High Contrast) */
+.role-badge-owner, .badge-owner {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+    border: 1px solid #bfdbfe;
+    font-weight: 600;
+}
+
+.role-badge-admin, .badge-admin {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+    border: 1px solid #fca5a5;
+    font-weight: 600;
+}
+
+.role-badge-viewer, .badge-viewer {
+    background-color: #e2e8f0 !important;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1;
+    font-weight: 600;
+}
+
+/* 5. Responsive Grid Systems */
+
+/* Workspace 2-Column Grid (Sidebar + Main Content) */
+.dashboard-layout, .dashboard-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.dashboard-layout.full-width, .dashboard-grid.full-width {
+    grid-template-columns: 1fr;
+}
+
+/* Document Cards Multi-Column Auto-Fill Grid */
+.doc-cards-grid, .document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+
+/* Stats Summary Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* 6. Card Components */
+.card-custom, .doc-card, .document-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doc-card, .document-card {
+    border-top: 5px solid var(--primary-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-custom:hover, .doc-card:hover, .document-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    margin: 3rem auto;
+}
+
+/* 7. Category Pills & Badges */
+.category-pill {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+}
+
+/* 8. Action Buttons & Input Focus States */
+.btn-download {
+    background-color: var(--success-green);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-download:hover {
+    background-color: var(--success-hover);
+    color: #ffffff;
+}
+
+.btn-vault-upload, .btn-custom-primary {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-vault-upload:hover, .btn-custom-primary:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+}
+
+/* 9. Scrollbar & Utilities */
+.permissions-scroll, .max-h-40 {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.permissions-scroll::-webkit-scrollbar, .max-h-40::-webkit-scrollbar {
+    width: 5px;
+}
+
+.permissions-scroll::-webkit-scrollbar-thumb, .max-h-40::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* 10. Responsive Breakpoints */
+@media (max-width: 991.98px) {
+    .dashboard-layout, .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .doc-cards-grid, .document-grid {
+        grid-template-columns: 1fr;
+    }
+}
